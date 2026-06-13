@@ -1,0 +1,10 @@
+[project]
+name = "asciitextwall"
+version = "1.0.0"
+description = "Simple tool to generate ascii text wallpapers"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.pylint."messages control"]
+disable = ["missing-function-docstring"]
