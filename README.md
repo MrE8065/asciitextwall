@@ -2,5 +2,5 @@
 
 Simple tool to generate ascii text wallpapers
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > Work in progress
