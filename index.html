@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing PyScript</title>
+
+    <!-- Import PyScript stuff -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.6.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.6.1/core.js"></script>
+  </head>
+
+  <body>
+    <h2>Pyfiglet</h2>
+    <button id="figlet-button">Show figlet text</button>
+    <div id="figlet-output"></div>
+
+    <h2>Save image</h2>
+    <textarea id="text-input">Hello from Python</textarea>
+    <button id="save-button">Save image</button>
+
+    <script type="py" src="./main.py" config="./pyscript.json"></script>
+  </body>
+
+</html>
