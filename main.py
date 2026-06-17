@@ -9,9 +9,9 @@ IMG_WIDTH = 1920
 IMG_HEIGHT = 1080
 BG_COLOR = "#000"
 COLOR = "#0f0"
-MONO_FONT = ""
+MONO_FONT = "./FiraCode-Regular.ttf"
 WIDTH = 200
-SIZE = 20
+SIZE = 15
 
 
 @when("click", "#figlet-button")

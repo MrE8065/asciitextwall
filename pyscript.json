@@ -1,3 +1,6 @@
 {
-  "packages": ["pyfiglet", "pillow"]
+  "packages": ["pyfiglet", "pillow"],
+  "files": {
+    "./fonts/FiraCode-Regular.ttf": "./FiraCode-Regular.ttf"
+  }
 }
