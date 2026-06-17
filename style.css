@@ -1,0 +1,18 @@
+body {
+  font-family: system-ui;
+}
+
+#figlet-output {
+  background-color: black;
+  color: white;
+  font-family: monospace;
+  font-size: 12px;
+  text-align: left;
+  white-space: pre;
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
