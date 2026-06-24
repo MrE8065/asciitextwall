@@ -1,7 +1,10 @@
-from pyscript import when, display, web  # type: ignore # pylint: disable=import-error
+import base64
+from io import BytesIO
 
 import pyfiglet
 from PIL import Image, ImageDraw, ImageFont, ImageText
+from pyscript import when, web  # type: ignore # pylint: disable=import-error
+
 
 TEXT = "Hello from Python"
 FONT = "dos_rebel"
@@ -14,20 +17,12 @@ WIDTH = 200
 SIZE = 15
 
 
-@when("click", "#figlet-button")
-def handle():
-    """Show figlet in page"""
-    text = pyfiglet.figlet_format(text=TEXT, font=FONT, width=WIDTH)
-    figlet_div = web.page["figlet-output"]
-    figlet_div.textContent = text
-    print(text)
-
-
 @when("click", "#save-button")
 def generate():
     """Generate image"""
     image = Image.new(mode="RGB", size=(IMG_WIDTH, IMG_HEIGHT), color=BG_COLOR)
-    ascii_art = pyfiglet.figlet_format(TEXT, font=FONT, width=WIDTH or 80)
+    text_input = str(web.page["text-input"].value)
+    ascii_art = pyfiglet.figlet_format(text_input, font=FONT, width=WIDTH or 80)
     # A monospaced font is needed in this case, because the characters might be missaligned otherwise
     font = ImageFont.truetype(font=MONO_FONT, size=SIZE)
     text = ImageText.Text(ascii_art, font)
@@ -42,4 +37,13 @@ def generate():
     final.text((x, y), text, COLOR)
 
     # Preview the image
-    display(image)
+    img_display = web.page["img-display"]
+    img_display.src = img_to_base64(image)
+
+
+def img_to_base64(img):
+    """Function to convert image to base64"""
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    value = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    return f"data:image/png;base64,{value}"

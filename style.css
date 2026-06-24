@@ -1,18 +1,135 @@
-body {
-  font-family: system-ui;
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#figlet-output {
-  background-color: black;
-  color: white;
-  font-family: monospace;
-  font-size: 12px;
-  text-align: left;
-  white-space: pre;
-  display: inline-block;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui;
+  background-color: #181616;
+  color: #c5c9c5;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 10px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#text-input {
+  outline: none;
+  font-family: system-ui;
+  color: #c5c9c5;
+  width: 100%;
+  height: 45px;
+  padding: 8px;
+  background-color: #0d0c0c;
+  border: none;
+  border-bottom: 2px solid #e6c38480;
+  /* border-radius: 12px 12px 0 0; */
+  cursor: text;
+  transition: all 0.25s ease-in-out;
+
+  &::placeholder {
+    color: #bdbecb;
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid #c8c093;
+  }
+}
+
+#save-button {
+  outline: none;
+  color: #c5c9c5;
+  font-family: system-ui;
+  font-weight: 600;
+  background-color: #0d0c0c;
+  height: 25px;
+  border: 2px solid #e6c38480;
+  border-radius: 12px;
+  height: auto;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    border: 2px solid #c8c093;
+  }
 }
 
 img {
-  width: 100%;
+  width: 50vw;
   height: auto;
+}
+
+svg {
+  width: 32px;
+  height: auto;
+}
+
+.name-link {
+  text-decoration: none;
+  color: #c5c9c5;
+
+  &:hover {
+    text-decoration: underline;
+    color: #c4b28a;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
