@@ -58,12 +58,11 @@ footer {
   background-color: #0d0c0c;
   border: none;
   border-bottom: 2px solid #e6c38480;
-  /* border-radius: 12px 12px 0 0; */
   cursor: text;
   transition: all 0.25s ease-in-out;
 
   &::placeholder {
-    color: #bdbecb;
+    color: #c5c9c590;
   }
 
   &:hover,
@@ -72,22 +71,28 @@ footer {
   }
 }
 
-#save-button {
+.button {
   outline: none;
-  color: #c5c9c5;
+  text-decoration: none;
+  border: 1px solid #e6c38480;
+  color: #c8c093;
   font-family: system-ui;
   font-weight: 600;
   background-color: #0d0c0c;
-  height: 25px;
-  border: 2px solid #e6c38480;
-  border-radius: 12px;
   height: auto;
+  border-radius: 12px;
   padding: 8px;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
 
   &:hover {
-    border: 2px solid #c8c093;
+    background-color: #c8c093;
+    color: #0d0c0c;
+  }
+
+  &:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
   }
 }
 

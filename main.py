@@ -3,7 +3,7 @@ from io import BytesIO
 
 import pyfiglet
 from PIL import Image, ImageDraw, ImageFont, ImageText
-from pyscript import when, web  # type: ignore # pylint: disable=import-error
+from pyscript import when, web, document  # type: ignore # pylint: disable=import-error
 
 
 TEXT = "Hello from Python"
@@ -40,6 +40,9 @@ def generate():
     img_display = web.page["img-display"]
     img_display.src = img_to_base64(image)
 
+    # Activate the download button after generating the image
+    web.page["download-button"].disabled = False
+
 
 def img_to_base64(img):
     """Function to convert image to base64"""
@@ -47,3 +50,12 @@ def img_to_base64(img):
     img.save(buffer, format="PNG")
     value = base64.b64encode(buffer.getvalue()).decode("utf-8")
     return f"data:image/png;base64,{value}"
+
+
+@when("click", "#download-button")
+def download():
+    """Function to download the generate image"""
+    downloadlink = document.createElement("a")  # type: ignore
+    downloadlink.download = "output.png"
+    downloadlink.href = web.page["img-display"].src
+    downloadlink.click()
