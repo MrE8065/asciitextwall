@@ -20,21 +20,28 @@ SIZE = 15
 @when("click", "#save-button")
 def generate():
     """Generate image"""
-    image = Image.new(mode="RGB", size=(IMG_WIDTH, IMG_HEIGHT), color=BG_COLOR)
     text_input = str(web.page["text-input"].value)
-    ascii_art = pyfiglet.figlet_format(text_input, font=FONT, width=WIDTH or 80)
+    txt_size_input = int(web.page["txt-size-input"].value)  # type: ignore
+    txt_width_input = int(web.page["txt-width-input"].value)  # type: ignore
+    img_width_input = int(web.page["img-width-input"].value)  # type: ignore
+    img_height_input = int(web.page["img-height-input"].value)  # type: ignore
+    bg_color_input = str(web.page["bg-color-input"].value)
+    txt_color_input = str(web.page["txt-color-input"].value)
+
+    image = Image.new(mode="RGB", size=(img_width_input, img_height_input), color=bg_color_input)
+    ascii_art = pyfiglet.figlet_format(text_input, font=FONT, width=txt_width_input)
     # A monospaced font is needed in this case, because the characters might be missaligned otherwise
-    font = ImageFont.truetype(font=MONO_FONT, size=SIZE)
+    font = ImageFont.truetype(font=MONO_FONT, size=txt_size_input)
     text = ImageText.Text(ascii_art, font)
 
     bbox = text.get_bbox()
     # Calculate the position for the text to be in the center of the image
-    x = (IMG_WIDTH - bbox[2]) // 2
-    y = (IMG_HEIGHT - bbox[3]) // 2
+    x = (img_width_input - bbox[2]) // 2
+    y = (img_height_input - bbox[3]) // 2
 
     final = ImageDraw.Draw(image)
     # Write the text to the image
-    final.text((x, y), text, COLOR)
+    final.text((x, y), text, txt_color_input)
 
     # Preview the image
     img_display = web.page["img-display"]

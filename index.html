@@ -28,7 +28,21 @@
       <div class="container">
         <div class="controls">
           <h2>Controls</h2>
-          <input type="text" id="text-input" placeholder="Text to show in image...">
+          <p>Text</p>
+          <input type="text" id="text-input" placeholder="Hello, World">
+          <p>Text Size (px)</p>
+          <input type="number" id="txt-size-input" placeholder="15">
+          <p>Text max width (px)</p>
+          <input type="number" id="txt-width-input" placeholder="160">
+          <p>Image size</p>
+          <div class="sizes-controls">
+            <input type="number" id="width-input" placeholder="1920" min="0">
+            <input type="number" id="height-input" placeholder="1080" min="0">
+          </div>
+          <p>Background color</p>
+          <input type="color" id="bg-color-input" value="#000000">
+          <p>Text color</p>
+          <input type="color" id="txt-color-input" value="#00ff00">
           <button id="save-button" class="button">Generate image</button>
         </div>
 

@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -71,6 +72,32 @@ footer {
   }
 }
 
+#width-input,
+#height-input,
+#txt-size-input,
+#txt-width-input {
+  outline: none;
+  font-family: system-ui;
+  color: #c5c9c5;
+  width: 120px;
+  height: 45px;
+  padding: 8px;
+  background-color: #0d0c0c;
+  border: none;
+  border-bottom: 2px solid #e6c38480;
+  cursor: text;
+  transition: all 0.25s ease-in-out;
+
+  &::placeholder {
+    color: #c5c9c590;
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid #c8c093;
+  }
+}
+
 .button {
   outline: none;
   text-decoration: none;
@@ -96,6 +123,10 @@ footer {
   }
 }
 
+#save-button {
+  margin-top: 20px;
+}
+
 img {
   width: 50vw;
   height: auto;
@@ -104,6 +135,46 @@ img {
 svg {
   width: 32px;
   height: auto;
+}
+
+/* https: //stackoverflow.com/questions/23372903/hide-up-down-arrow-buttons-spinner-in-input-number-firefox-29 */
+input[type='number'] {
+  appearance: none;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+input[type="color"] {
+  display: inline-flex;
+  vertical-align: bottom;
+  padding: 0;
+  border: 0;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 10px;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: 0;
+  }
+
+  &::-moz-color-swatch {
+    border: 0;
+  }
+}
+
+p {
+  margin-top: 10px;
 }
 
 .name-link {
@@ -128,6 +199,11 @@ svg {
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
+  gap: 10px;
+}
+
+.sizes-controls {
+  display: flex;
   gap: 10px;
 }
 
