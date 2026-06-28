@@ -72,8 +72,8 @@ footer {
   }
 }
 
-#width-input,
-#height-input,
+#img-width-input,
+#img-height-input,
 #txt-size-input,
 #txt-width-input {
   outline: none;

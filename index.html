@@ -26,25 +26,25 @@
 
     <main>
       <div class="container">
-        <div class="controls">
+        <form class="controls" id="controls-form">
           <h2>Controls</h2>
           <p>Text</p>
-          <input type="text" id="text-input" placeholder="Hello, World">
+          <input type="text" id="text-input" placeholder="Hello, World" required>
           <p>Text Size (px)</p>
-          <input type="number" id="txt-size-input" placeholder="15">
+          <input type="number" id="txt-size-input" placeholder="15" min="1" required>
           <p>Text max width (px)</p>
-          <input type="number" id="txt-width-input" placeholder="160">
+          <input type="number" id="txt-width-input" placeholder="160" min="1" required>
           <p>Image size</p>
           <div class="sizes-controls">
-            <input type="number" id="width-input" placeholder="1920" min="0">
-            <input type="number" id="height-input" placeholder="1080" min="0">
+            <input type="number" id="img-width-input" placeholder="1920" min="1" required>
+            <input type="number" id="img-height-input" placeholder="1080" min="1" required>
           </div>
           <p>Background color</p>
           <input type="color" id="bg-color-input" value="#000000">
           <p>Text color</p>
           <input type="color" id="txt-color-input" value="#00ff00">
-          <button id="save-button" class="button">Generate image</button>
-        </div>
+          <button id="save-button" class="button" type="submit">Generate image</button>
+        </form>
 
         <div class="results">
           <img src="https://dummyimage.com/600x400/000/fff" alt="DummyImage" id="img-display">

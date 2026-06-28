@@ -17,8 +17,8 @@ WIDTH = 200
 SIZE = 15
 
 
-@when("click", "#save-button")
-def generate():
+@when("submit", "#controls-form")
+def generate(event):
     """Generate image"""
     text_input = str(web.page["text-input"].value)
     txt_size_input = int(web.page["txt-size-input"].value)  # type: ignore
@@ -49,6 +49,9 @@ def generate():
 
     # Activate the download button after generating the image
     web.page["download-button"].disabled = False
+
+    # Prevent the form submit refreshing the page
+    event.preventDefault()
 
 
 def img_to_base64(img):
