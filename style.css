@@ -214,3 +214,38 @@ p {
   justify-content: center;
   gap: 10px;
 }
+
+/* https: //developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select */
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  color: #c5c9c5;
+  border: 2px solid #e6c38480;
+  background: #0d0c0c;
+  padding: 10px;
+  width: 100%;
+  border-radius: 0;
+
+  &::picker-icon {
+    color: #e6c38480;
+  }
+}
+
+::picker(select) {
+  border: none;
+  max-height: 30%;
+}
+
+option {
+  background: #181616;
+  padding: 10px;
+  transition: 0.4s;
+
+  &:hover,
+  &:focus {
+    background: #e6c38480;
+  }
+}

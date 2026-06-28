@@ -1,5 +1,6 @@
 import base64
 from io import BytesIO
+import random
 
 import pyfiglet
 from PIL import Image, ImageDraw, ImageFont, ImageText
@@ -17,10 +18,45 @@ WIDTH = 200
 SIZE = 15
 
 
+def load_fonts():
+    """Function to load the pyfiglet fonts to the select element"""
+    select = web.page["figlet-font-select"]
+    fonts = sorted(pyfiglet.FigletFont.getFonts())
+
+    # This method appends each option separately, so a lot of "appends" are called every time
+    # for font in fonts:
+    #     option = document.createElement("option")  # type: ignore
+    #     option.value = font
+    #     option.text = font
+    #     select.append(option)  # type: ignore
+
+    # Append all the options at once
+    select.innerHTML = "".join(
+        f'<option value="{font}">{font}</option>' for font in fonts
+    )
+
+    # Some of the fonts I like
+    starter_fonts = (
+        "dos_rebel",
+        "slant",
+        "big",
+        "bloody",
+        "delta_corps_priest_1"
+    )
+
+    # Choose random font from the list
+    random_font = random.choice(starter_fonts)
+    select.value = random_font
+
+
+load_fonts()
+
+
 @when("submit", "#controls-form")
 def generate(event):
     """Generate image"""
     text_input = str(web.page["text-input"].value)
+    txt_figlet_font = str(web.page["figlet-font-select"].value)
     txt_size_input = int(web.page["txt-size-input"].value)  # type: ignore
     txt_width_input = int(web.page["txt-width-input"].value)  # type: ignore
     img_width_input = int(web.page["img-width-input"].value)  # type: ignore
@@ -29,7 +65,7 @@ def generate(event):
     txt_color_input = str(web.page["txt-color-input"].value)
 
     image = Image.new(mode="RGB", size=(img_width_input, img_height_input), color=bg_color_input)
-    ascii_art = pyfiglet.figlet_format(text_input, font=FONT, width=txt_width_input)
+    ascii_art = pyfiglet.figlet_format(text_input, font=txt_figlet_font, width=txt_width_input)
     # A monospaced font is needed in this case, because the characters might be missaligned otherwise
     font = ImageFont.truetype(font=MONO_FONT, size=txt_size_input)
     text = ImageText.Text(ascii_art, font)
