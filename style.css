@@ -79,7 +79,6 @@ footer {
   outline: none;
   font-family: system-ui;
   color: #c5c9c5;
-  width: 120px;
   height: 45px;
   padding: 8px;
   background-color: #0d0c0c;
@@ -130,6 +129,7 @@ footer {
 img {
   width: 50vw;
   height: auto;
+  width: 100%;
 }
 
 svg {
@@ -188,22 +188,22 @@ p {
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(280px, 1fr);
+  gap: 24px;
+  width: min(1120px, 100%);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
-  justify-content: center;
   gap: 10px;
+  width: 100%;
 }
 
 .sizes-controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -213,6 +213,7 @@ p {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  align-self: center;
 }
 
 /* https: //developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select */
@@ -247,5 +248,15 @@ option {
   &:hover,
   &:focus {
     background: #e6c38480;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    padding: 20px 12px 0;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
   }
 }
